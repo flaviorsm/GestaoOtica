@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/04/2017 21:28:56 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dws.otica.model.entity.Usuario" table="usuario" catalog="otica" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="IdUsuario" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="Nome" length="200" not-null="true">
+                <comment>Nome do usuario</comment>
+            </column>
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="50" not-null="true">
+                <comment>E-mail usado para logar no sistema</comment>
+            </column>
+        </property>
+        <property name="senha" type="string">
+            <column name="Senha" length="32">
+                <comment>Senha critografada escolhida pelo usu&#225;rio</comment>
+            </column>
+        </property>
+        <property name="senhaProvisoria" type="string">
+            <column name="SenhaProvisoria" length="32">
+                <comment>Senha critografada escolhida pelo usu&#225;rio</comment>
+            </column>
+        </property>
+        <property name="ativo" type="java.lang.Character">
+            <column name="Ativo" length="1">
+                <comment>Se usu&#225;rio est&#225; ativo: [S] sim, [N] n&#227;o</comment>
+            </column>
+        </property>
+        <property name="dtAtivacao" type="timestamp">
+            <column name="DtAtivacao" length="19">
+                <comment>Data em que o usu&#225;rio foi ativado</comment>
+            </column>
+        </property>
+        <property name="criadoEm" type="timestamp">
+            <column name="CriadoEm" length="19" not-null="true">
+                <comment>Data de inclus&#227;o</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

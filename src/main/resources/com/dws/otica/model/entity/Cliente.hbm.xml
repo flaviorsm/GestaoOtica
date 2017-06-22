@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/04/2017 21:28:56 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dws.otica.model.entity.Cliente" table="cliente" catalog="otica" optimistic-lock="version">
+        <id name="idCliente" type="java.lang.Integer">
+            <column name="IdCliente" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="Nome" length="200" not-null="true" />
+        </property>
+        <property name="rg" type="string">
+            <column name="RG" length="20" />
+        </property>
+        <property name="cpf" type="string">
+            <column name="CPF" length="11" />
+        </property>
+        <property name="dtNascimento" type="timestamp">
+            <column name="DtNascimento" length="19" />
+        </property>
+        <property name="sexo" type="java.lang.Character">
+            <column name="Sexo" length="1">
+                <comment>[M] Masculino | [F] Feminino</comment>
+            </column>
+        </property>
+        <property name="endereco" type="string">
+            <column name="Endereco" length="100" />
+        </property>
+        <property name="numero" type="java.lang.Integer">
+            <column name="Numero" />
+        </property>
+        <property name="complemento" type="string">
+            <column name="Complemento" length="20" />
+        </property>
+        <property name="bairro" type="string">
+            <column name="Bairro" length="50" />
+        </property>
+        <property name="cidade" type="string">
+            <column name="Cidade" length="50" />
+        </property>
+        <property name="estado" type="string">
+            <column name="Estado" length="2" />
+        </property>
+        <set name="emails" table="email" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Cliente" not-null="true" />
+            </key>
+            <one-to-many class="com.dws.otica.model.entity.Email" />
+        </set>
+        <set name="telefones" table="telefone" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Cliente" not-null="true" />
+            </key>
+            <one-to-many class="com.dws.otica.model.entity.Telefone" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/04/2017 21:28:56 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dws.otica.model.entity.Telefone" table="telefone" catalog="otica" optimistic-lock="version">
+        <id name="idTelefone" type="java.lang.Integer">
+            <column name="IdTelefone" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="com.dws.otica.model.entity.Cliente" fetch="select">
+            <column name="Cliente" not-null="true" />
+        </many-to-one>
+        <property name="telefone" type="string">
+            <column name="Telefone" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="tipo" type="char">
+            <column name="Tipo" length="1" not-null="true">
+                <comment>Tipo: [C] celular, [F] Fixo</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
